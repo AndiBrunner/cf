@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+require "open-uri"
+
 puts "__FILE__=#{__FILE__}"
 #puts "File.expand_path("../../lib", __FILE__)=#{File.expand_path("../../lib", __FILE__)}"
 
@@ -8,8 +10,24 @@ $stdout.sync = true
 
 build_dir = ARGV[0]
 cache_dir = ARGV[1]
+pwd=Dir.pwd
+
 puts "build_dir=#{build_dir}"  
 puts "cache_dir=#{cache_dir}" 
-puts "v1" 
-		puts "pwd=#{Dir.pwd}"
+puts "pwd=#{Dir.pwd}"
+
+#download nginx
+Dir.cd build_dir
+`wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2`
+`tar xjvf nginx-1.4.1-64.tar.bz2`
+`mv nginx-1.4.1-64 nginx`
+
+#download mono
+`wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2`
+`tar xjvf mono-3.2.3-64.tar.bz2`
+`mv mono-3.2.3-64 mono`
+
+
+
+
 
