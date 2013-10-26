@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 puts "---"
 puts "default_process_types:"
-puts "  web: ruby boot.rb #{&0}"
+puts '  web: ruby boot.rb #{&0}'
