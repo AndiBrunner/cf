@@ -2,7 +2,7 @@
 build_dir = ARGV[0]
 
 
-system("PATH=#{build_dir}/mono/bin:#{build_dir}/nginx/sbin:$PATH")
+system("export PATH=#{build_dir}/mono/bin:#{build_dir}/nginx/sbin:$PATH")
 system("ln -s #{build_dir}/mono /opt/mono")
 system("ln -s #{build_dir}/nginx /opt/nginx")
 system("ln -s #{build_dir}/www /www")
