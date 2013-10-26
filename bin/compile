@@ -17,6 +17,7 @@ puts "cache_dir=#{cache_dir}"
 puts "pwd=#{Dir.pwd}"
 
 Dir.chdir("#{build_dir}")
+system("ls #{build_dir}")
 #download nginx
 system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
 system("tar xjvf nginx-1.4.1-64.tar.bz2")
