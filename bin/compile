@@ -18,6 +18,7 @@ puts "pwd=#{Dir.pwd}"
 
 Dir.chdir("#{build_dir}")
 #download nginx
+puts "pwd2=#{Dir.pwd}"
 `echo pwd=$(pwd)`
 `wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2`
 `tar xjvf nginx-1.4.1-64.tar.bz2`
