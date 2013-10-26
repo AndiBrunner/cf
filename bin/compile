@@ -18,17 +18,14 @@ puts "pwd=#{Dir.pwd}"
 
 Dir.chdir("#{build_dir}")
 #download nginx
-puts "pwd2=#{Dir.pwd}"
-system("echo pwd=$(pwd)")
-puts "pwd3=#{Dir.pwd}"
-`wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2`
-`tar xjvf nginx-1.4.1-64.tar.bz2`
-`mv nginx-1.4.1-64 nginx`
+system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
+system("tar xjvf nginx-1.4.1-64.tar.bz2")
+system("mv nginx-1.4.1-64 nginx")
 
 #download mono
-#{}`wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2`
-#{}`tar xjvf mono-3.2.3-64.tar.bz2`
-#{}`mv mono-3.2.3-64 mono`
+system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
+system("tar xjvf mono-3.2.3-64.tar.bz2")
+system("mv mono-3.2.3-64 mono")
 
 
 
