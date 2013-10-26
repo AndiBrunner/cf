@@ -16,7 +16,6 @@ puts "build_dir=#{build_dir}"
 puts "cache_dir=#{cache_dir}" 
 puts "pwd=#{Dir.pwd}"
 
-Dir.mkdir("app")
 Dir.chdir("#{build_dir}")
 #download nginx
 `wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2`
