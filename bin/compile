@@ -23,9 +23,9 @@ Dir.chdir("#{build_dir}")
 `mv nginx-1.4.1-64 nginx`
 
 #download mono
-`wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2`
-`tar xjvf mono-3.2.3-64.tar.bz2`
-`mv mono-3.2.3-64 mono`
+#{}`wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2`
+#{}`tar xjvf mono-3.2.3-64.tar.bz2`
+#{}`mv mono-3.2.3-64 mono`
 
 
 
