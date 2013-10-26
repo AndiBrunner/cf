@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+pack_dir="/tmp/buildpacks/cf.git/bin"
 puts "default_process_types:"
-puts '  web: ruby boot.rb #{ARGV[0]}'
+puts "  web: ruby #{pack_dir}/boot.rb #{ARGV[0]}"
