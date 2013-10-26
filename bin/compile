@@ -25,10 +25,6 @@ system("tar xjvf nginx-1.4.1-64.tar.bz2")
 system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
 system("tar xjvf mono-3.2.3-64.tar.bz2")
 
-system("PATH=#{build_dir}/mono/bin:#{build_dir}/nginx/sbin:$PATH")
-system("ln -s #{build_dir}/mono /opt/mono")
-system("ln -s #{build_dir}/nginx /opt/nginx")
-system("ln -s #{build_dir}/www /www")
 
 
 
