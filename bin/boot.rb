@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 build_dir = ARGV[0]
-
+system("mkdir hallo")
 
 system("export PATH=#{build_dir}/mono/bin:#{build_dir}/nginx/sbin:$PATH")
 system("ln -s #{build_dir}/mono /opt/mono")

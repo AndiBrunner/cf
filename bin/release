@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+system("mkdir bello")
 pack_dir="/tmp/buildpacks/cf.git/bin"
 puts "default_process_types:"
 puts "  web: ruby #{pack_dir}/boot.rb #{ARGV[0]}"
