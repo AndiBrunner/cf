@@ -2,7 +2,7 @@
 pack_dir=ARGV[0]
 
 #system("export PATH=#{pack_dir}/mono/bin:#{pack_dir}/nginx/sbin:$PATH")
-system("echo aaaa > /home/vcap/app/nginx/conf/log")
+system("echo aaaa > #{pack_dir}/nginx/conf/log")
 puts "config_vars:"
 puts "   test: andi"
 
