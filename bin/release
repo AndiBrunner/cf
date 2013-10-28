@@ -5,5 +5,5 @@ pack_dir=ARGV[0]
 #system("echo listen #{ENV[PORT]}';' > /home/vcap/app/nginx/conf/port")
 
 puts "default_process_types:"
-puts "  web: /home/vcap/app/nginx/start;/home/vcap/app/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
-#puts "  web: /home/vcap/app/nginx/start"
+#puts "  web: /home/vcap/app/nginx/start;/home/vcap/app/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
+puts "  web: /home/vcap/app/nginx/start"
