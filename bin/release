@@ -3,7 +3,8 @@ pack_dir=ARGV[0]
 
 #system("export PATH=#{pack_dir}/mono/bin:#{pack_dir}/nginx/sbin:$PATH")
 system("echo aaaa > /home/vcap/app/nginx/conf/log")
-system("echo #{ENV[PATH]} >> /home/vcap/app/nginx/conf/log")
+puts "config_vars:"
+puts "   test: andi"
 
 puts "default_process_types:"
 #puts "  web: /home/vcap/app/nginx/start;/home/vcap/app/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
