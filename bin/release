@@ -2,6 +2,7 @@
 pack_dir=ARGV[0]
 
 #system("export PATH=#{pack_dir}/mono/bin:#{pack_dir}/nginx/sbin:$PATH")
+system("echo listen $PORT';' > #{build_dir}/nginx/conf/port")
 
 puts "default_process_types:"
 puts "  web: /home/vcap/app/nginx/sbin/nginx;/home/vcap/app/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
