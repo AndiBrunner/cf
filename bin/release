@@ -2,9 +2,6 @@
 pack_dir=ARGV[0]
 
 system("export PATH=#{pack_dir}/mono/bin:#{pack_dir}/nginx/sbin:$PATH")
-system("sudo ln -s #{pack_dir}/mono /opt/mono")
-system("sudo ln -s #{pack_dir}/nginx /opt/nginx")
-system("sudo ln -s #{pack_dir}/www /www")
 
 puts "default_process_types:"
-puts "  web: ruby && fast-cgi_mono_server4 /applications=/:/www/ /socket=tcp:127.0.0.1:9000 &"
+puts "  web: nginx;fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
