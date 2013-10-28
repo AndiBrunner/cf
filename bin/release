@@ -4,4 +4,4 @@ pack_dir=ARGV[0]
 #system("export PATH=#{pack_dir}/mono/bin:#{pack_dir}/nginx/sbin:$PATH")
 
 puts "default_process_types:"
-puts "  web: #{pack_dir}/nginx/sbin/nginx;#{pack_dir}/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
+puts "  web: /home/vcap/app/nginx/sbin/nginx;/home/vcap/app/mono/bin/fastcgi-mono-server4 /applications=/:/home/vcap/app/www/ /socket=tcp:127.0.0.1:9000 &"
