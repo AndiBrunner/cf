@@ -25,7 +25,7 @@ system("ls -al #{build_dir}/www")
 system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
 system("tar xjvf nginx-1.4.1-64.tar.bz2")
 system("rm nginx-1.4.1-64.tar.bz2")
-system("echo listen $PORT'; > #{build_dir}/nginx/conf/port")
+system("echo listen $PORT';' > #{build_dir}/nginx/conf/port")
 system("ls -al #{build_dir}/nginx/conf")
 #download mono
 system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
