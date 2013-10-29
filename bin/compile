@@ -23,6 +23,7 @@ system("ls -al #{build_dir}/www")
 system("mkdir -p .profile.d")
 system("echo export PATH=/home/vcap/app/nginx/sbin:'$PATH'> #{build_dir}/.profile.d/nginx.sh")
 system("echo export PATH=/home/vcap/app/mono/bin:'$PATH' > #{build_dir}/.profile.d/mono.sh")
+system("echo export PATH=/home/vcap/app/mono/bin:'$PATH' >> #{build_dir}/.profile.d/mono.sh")
 
 #download nginx
 system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
