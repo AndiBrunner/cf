@@ -12,10 +12,6 @@ build_dir = ARGV[0]
 cache_dir = ARGV[1]
 pwd=Dir.pwd
 
-system("mkdir -p .profile.d")
-system("echo export PATH=/home/vcap/app/nginx/sbin:\$PATH > #{pwd}/.profile.d/nginx.sh")
-system("echo export PATH=/home/vcap/app/mono/bin:\$PATH > #{pwd}/.profile.d/mono.sh")
-
 puts "build_dir=#{build_dir}"  
 puts "cache_dir=#{cache_dir}" 
 puts "pwd=#{Dir.pwd}"
@@ -24,6 +20,9 @@ Dir.chdir("#{build_dir}")
 system("ls -al #{build_dir}")
 system("ls -al #{build_dir}/www")
 
+system("mkdir -p .profile.d")
+system("echo export PATH=/home/vcap/app/nginx/sbin:\$PATH > #{build_dir}/.profile.d/nginx.sh")
+system("echo export PATH=/home/vcap/app/mono/bin:\$PATH > #{build_dir}/.profile.d/mono.sh")
 
 #download nginx
 system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
