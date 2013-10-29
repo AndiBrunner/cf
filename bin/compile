@@ -24,7 +24,7 @@ system("mkdir -p .profile.d")
 system("echo export PATH=/home/vcap/app/nginx/sbin:'$PATH'> #{build_dir}/.profile.d/nginx.sh")
 system("echo export PATH=/home/vcap/app/mono/bin:'$PATH' > #{build_dir}/.profile.d/mono.sh")
 system("echo export PATH=/home/vcap/app/mono/bin:'$PATH' >> #{build_dir}/.profile.d/mono.sh")
-system("echo export LD_LIBRARY_PATH=/home/vcap/app/mono/lib:$LD_LIBRARY_PATH"      
+system("echo export LD_LIBRARY_PATH=/home/vcap/app/mono/lib:$LD_LIBRARY_PATH >> #{build_dir}/.profile.d/mono.sh")   
 #system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
 #system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
 #system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
