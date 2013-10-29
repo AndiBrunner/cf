@@ -12,6 +12,10 @@ build_dir = ARGV[0]
 cache_dir = ARGV[1]
 pwd=Dir.pwd
 
+system("makedir -p .profile.d")
+system("echo export PATH=/home/vcap/app/nginx/sbin:\$PATH > ./.profile.d/nginx.sh")
+system("echo export PATH=/home/vcap/app/mono/bin:\$PATH > ./.profile.d/mono.sh")
+
 puts "build_dir=#{build_dir}"  
 puts "cache_dir=#{cache_dir}" 
 puts "pwd=#{Dir.pwd}"
@@ -30,11 +34,6 @@ system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
 system("tar xjvf mono-3.2.3-64.tar.bz2")
 system("rm mono-3.2.3-64.tar.bz2")
 
-system("makedir -p #{build_dir}/../.profile.d")
-system("echo export PATH=/home/vcap/app/nginx/sbin:\$PATH > #{build_dir}/../.profile.d/nginx.sh")
-system("echo export PATH=/home/vcap/app/mono/bin:\$PATH > #{build_dir}/../.profile.d/mono.sh")
-
-system("echo aaa > #{build_dir}/")
 system("ls -al #{build_dir}/../")
 system("ls -al #{build_dir}")
 
