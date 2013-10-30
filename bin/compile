@@ -9,7 +9,7 @@ cache_dir = ARGV[1]
 pwd=Dir.pwd
 system("ls -al")
 puts "build_dir=#{build_dir}" 
-system("ls -al #{build_dir}/*") 
+system("ls -al #{build_dir}") 
 puts "cache_dir=#{cache_dir}" 
 puts "pwd=#{Dir.pwd}"
 
@@ -42,5 +42,7 @@ system("rm nginx-1.4.1-64.tar.bz2")
 Dir.chdir("#{build_dir}")
 system("cp -r #{cache_dir}/* .")
 #puts "$HOME=#{home}"
-system("ls -al #{build_dir}/*")
-system("ls -al #{cache_dir}/*")
+puts "-----build_dir----"
+system("ls -al #{build_dir}")
+puts "-----cache_dir----"
+system("ls -al #{cache_dir}")
