@@ -16,37 +16,37 @@ pwd=Dir.pwd
 #puts "-----pwd----"
 #puts "pwd=#{Dir.pwd}"
 #system("ls -al") 
+Dir.chdir(cache_dir)
 
-#system("mkdir -p #{cache_dir}")
-#system("rm -rf #{cache_dir}")
-#system("mkdir #{cache_dir}")
-Dir.chdir("#{build_dir}")
+if !Dir.exists?(cache_dir)	
+	Dir.mkdir(cache_dir) 
+	system("mkdir -p .profile.d")
+	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
+	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
+	system("echo export PATH=$HOME/app/mono/bin:'$PATH' >> #{cache_dir}/.profile.d/mono.sh")
+	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:$LD_LIBRARY_PATH >> #{cache_dir}/.profile.d/mono.sh")   
+	##system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
+	##system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
+	##system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
+	##system("echo export ACLOCAL_PATH= "$HOME/#{File.join(MONO_HOME,'share','aclocal')}:$ACLOCAL_PATH"      
 
-#system("ls -al #{build_dir}")
-#system("ls -al #{build_dir}/www")
+	#download nginx
+	system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
+	system("tar xjvf nginx-1.4.1-64.tar.bz2")
+	system("rm nginx-1.4.1-64.tar.bz2")
+	#download mono
+	system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
+	system("tar xjvf mono-3.2.3-64.tar.bz2")
+	system("rm mono-3.2.3-64.tar.bz2")
+end
 
-system("mkdir -p .profile.d")
-system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{build_dir}/.profile.d/nginx.sh")
-system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{build_dir}/.profile.d/mono.sh")
-system("echo export PATH=$HOME/app/mono/bin:'$PATH' >> #{build_dir}/.profile.d/mono.sh")
-system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:$LD_LIBRARY_PATH >> #{build_dir}/.profile.d/mono.sh")   
-##system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
-##system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
-##system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
-##system("echo export ACLOCAL_PATH= "$HOME/#{File.join(MONO_HOME,'share','aclocal')}:$ACLOCAL_PATH"      
-#download nginx
-system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
-system("tar xjvf nginx-1.4.1-64.tar.bz2")
-system("rm nginx-1.4.1-64.tar.bz2")
-#download mono
-system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
-system("tar xjvf mono-3.2.3-64.tar.bz2")
-system("rm mono-3.2.3-64.tar.bz2")
+#Dir.chdir(build_dir)
+system("cp -r #{cache_dir}/* #{build_dir}/")
+system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
+
 #home=ENV["HOME"]
 
 #Dir.chdir("#{build_dir}")
-#system("cp -r #{cache_dir}/* #{build_dir}/")
-#system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
 #puts "$HOME=#{home}"
 #puts "-----build_dir----"
 #system("ls -al #{build_dir}")
