@@ -17,9 +17,9 @@ puts "-----pwd----"
 puts "pwd=#{Dir.pwd}"
 system("ls -al") 
 
-if !Dir.exists?(cache_dir)	
-	Dir.mkdir(cache_dir) 
-	Dir.chdir(cache_dir)
+if !Dir.exists?("#{cache_dir}/download")	
+	Dir.mkdir("#{cache_dir}/download") 
+	Dir.chdir("#{cache_dir}/download")
 	system("mkdir -p .profile.d")
 	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
 	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
@@ -41,8 +41,8 @@ if !Dir.exists?(cache_dir)
 end
 
 #Dir.chdir(build_dir)
-system("cp -r #{cache_dir}/* #{build_dir}/")
-system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
+system("cp -r #{cache_dir}/download/* #{build_dir}/")
+system("cp -r #{cache_dir}/download/.profile.d #{build_dir}/")
 
 #home=ENV["HOME"]
 
