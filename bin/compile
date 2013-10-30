@@ -8,11 +8,11 @@ build_dir = ARGV[0]
 cache_dir = ARGV[1]
 pwd=Dir.pwd
 
-#puts "build_dir=#{build_dir}"  
-#puts "cache_dir=#{cache_dir}" 
+puts "build_dir=#{build_dir}"  
+puts "cache_dir=#{cache_dir}" 
 #puts "pwd=#{Dir.pwd}"
 
-Dir.chdir("#{build_dir}")
+Dir.chdir("#{cache_dir}")
 #system("ls -al #{build_dir}")
 #system("ls -al #{build_dir}/www")
 
@@ -35,6 +35,8 @@ system("rm nginx-1.4.1-64.tar.bz2")
 #system("rm mono-3.2.3-64.tar.bz2")
 #home=ENV["HOME"]
 
+Dir.chdir("#{build_dir}")
+system("cp -r #{cache_dir}/* .")
 #puts "$HOME=#{home}"
 #system("ls -al #{build_dir}/../")
 #system("ls -al #{build_dir}")
