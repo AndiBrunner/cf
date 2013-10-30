@@ -16,10 +16,10 @@ pwd=Dir.pwd
 #puts "-----pwd----"
 #puts "pwd=#{Dir.pwd}"
 #system("ls -al") 
-Dir.chdir(cache_dir)
 
 if !Dir.exists?(cache_dir)	
 	Dir.mkdir(cache_dir) 
+	Dir.chdir(cache_dir)
 	system("mkdir -p .profile.d")
 	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
 	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
