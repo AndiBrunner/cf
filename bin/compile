@@ -10,7 +10,7 @@ pwd=Dir.pwd
 system("ls -al")
 puts "build_dir=#{build_dir}"  
 puts "cache_dir=#{cache_dir}" 
-#puts "pwd=#{Dir.pwd}"
+puts "pwd=#{Dir.pwd}"
 
 Dir.chdir("#{cache_dir}")
 #system("ls -al #{build_dir}")
