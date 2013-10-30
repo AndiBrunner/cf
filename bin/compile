@@ -12,7 +12,10 @@ puts "build_dir=#{build_dir}"
 puts "cache_dir=#{cache_dir}" 
 puts "pwd=#{Dir.pwd}"
 
+system("mkdir -p #{cache_dir}")
 Dir.chdir("#{cache_dir}")
+system("rm -rf *}")
+
 #system("ls -al #{build_dir}")
 #system("ls -al #{build_dir}/www")
 
