@@ -17,14 +17,15 @@ puts "-----pwd----"
 puts "pwd=#{Dir.pwd}"
 system("ls -al") 
 
-if !Dir.exists?("#{cache_dir}/download")	
-	Dir.mkdir("#{cache_dir}/download") 
-	Dir.chdir("#{cache_dir}/download")
+download_dir = "#{download_dir}"
+if !Dir.exists?("#{download_dir}")	
+	Dir.mkdir("#{download_dir}") 
+	Dir.chdir("#{download_dir}")
 	system("mkdir -p .profile.d")
-	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
-	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
-	system("echo export PATH=$HOME/app/mono/bin:'$PATH' >> #{cache_dir}/.profile.d/mono.sh")
-	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:$LD_LIBRARY_PATH >> #{cache_dir}/.profile.d/mono.sh")   
+	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{download_dir}/.profile.d/nginx.sh")
+	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{download_dir}/.profile.d/mono.sh")
+	system("echo export PATH=$HOME/app/mono/bin:'$PATH' >> #{download_dir}/.profile.d/mono.sh")
+	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:$LD_LIBRARY_PATH >> #{download_dir}/.profile.d/mono.sh")   
 	##system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
 	##system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
 	##system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
@@ -41,8 +42,8 @@ if !Dir.exists?("#{cache_dir}/download")
 end
 
 #Dir.chdir(build_dir)
-system("cp -r #{cache_dir}/download/* #{build_dir}/")
-system("cp -r #{cache_dir}/download/.profile.d #{build_dir}/")
+system("cp -r #{download_dir}/* #{build_dir}/")
+system("cp -r #{download_dir}/.profile.d #{build_dir}/")
 
 #home=ENV["HOME"]
 
