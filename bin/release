@@ -4,4 +4,4 @@ home=ENV['HOME']
 
 
 puts "default_process_types:"
-puts "  web: erb nginx/conf/nginx.conf.erb > nginx/conf/nginx.conf; nginx/sbin/nginx"
+puts "  web: nginx/start"
