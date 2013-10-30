@@ -46,6 +46,7 @@ system("rm nginx-1.4.1-64.tar.bz2")
 
 Dir.chdir("#{build_dir}")
 system("cp -r #{cache_dir}/* #{build_dir}/")
+system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
 #puts "$HOME=#{home}"
 puts "-----build_dir----"
 system("ls -al #{build_dir}")
