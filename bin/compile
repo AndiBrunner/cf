@@ -42,4 +42,4 @@ Dir.chdir("#{build_dir}")
 system("cp -r #{cache_dir}/* .")
 #puts "$HOME=#{home}"
 system("ls -al #{build_dir}/*")
-system("ls -al #{cache_dir}")
+system("ls -al #{cache_dir}/*")
