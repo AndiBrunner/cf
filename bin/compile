@@ -8,15 +8,15 @@ build_dir = ARGV[0]
 cache_dir = ARGV[1]
 pwd=Dir.pwd
 
-puts "-----build_dir----"
-puts "build_dir=#{build_dir}" 
-system("ls -al #{build_dir}")
+#puts "-----build_dir----"
+#puts "build_dir=#{build_dir}" 
+#system("ls -al #{build_dir}")
 #puts "-----cache_dir----"
 #puts "cache_dir=#{cache_dir}" 
 #system("ls -al #{cache_dir}")
-puts "-----pwd----"
-puts "pwd=#{Dir.pwd}"
-system("ls -al") 
+#puts "-----pwd----"
+#puts "pwd=#{Dir.pwd}"
+#system("ls -al") 
 
 if !Dir.exists?(cache_dir)	
 	Dir.mkdir(cache_dir) 
@@ -43,7 +43,7 @@ end
 #Dir.chdir(build_dir)
 system("mv #{Dir.pwd}/app #{Dir.pwd}/tmp/www")
 system("mkdir -p #{Dir.pwd}/app")
-system("mv #{Dir.pwd}/tmp/www #{build_dir}/app/www")
+system("mv #{Dir.pwd}/tmp/www #{Dir.pwd}/app/www")
 
 system("cp -r #{cache_dir}/* #{build_dir}/")
 system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
