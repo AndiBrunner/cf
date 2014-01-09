@@ -20,6 +20,9 @@ pwd=Dir.pwd
 
 if !Dir.exists?(cache_dir)	
 	Dir.mkdir(cache_dir) 
+end
+
+if !Dir.exists?("{cache_dir}/nginx")	
 	Dir.chdir(cache_dir)
 	system("mkdir -p .profile.d")
 	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
