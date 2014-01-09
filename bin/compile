@@ -24,10 +24,6 @@ end
 
 if !Dir.exists?("#{cache_dir}/nginx")	
 	Dir.chdir(cache_dir)
-	system("mkdir -p .profile.d")
-	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
-	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
-	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/.profile.d/mono.sh")   
 	##system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
 	##system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
 	##system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
@@ -41,6 +37,13 @@ if !Dir.exists?("#{cache_dir}/nginx")
 	system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
 	system("tar xjvf mono-3.2.3-64.tar.bz2")
 	system("rm mono-3.2.3-64.tar.bz2")
+	Dir.chdir(pwd)
+
+	system("mkdir -p #{cache_dir}/.profile.d")
+	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
+	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
+	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/.profile.d/mono.sh")   
+
 end
 
 #Dir.chdir(build_dir)
