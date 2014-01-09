@@ -47,14 +47,14 @@ if !Dir.exists?("#{cache_dir}/nginx")
 end
 
 #Dir.chdir(build_dir)
-system("mv #{pwd}/app #{pwd}/tmp/www")
-system("mkdir -p #{pwd}/app")
-system("mv #{pwd}/tmp/www #{pwd}/app/www")
+#system("mv #{pwd}/app #{pwd}/tmp/www")
+#system("mkdir -p #{pwd}/app")
+#system("mv #{pwd}/tmp/www #{pwd}/app/www")
 
-system("cp -r #{cache_dir}/* #{build_dir}/")
+system("cp -r #{cache_dir}/nginx #{build_dir}/")
+system("cp -r #{cache_dir}/mono #{build_dir}/")
 
 system("mkdir -p #{build_dir}/.profile.d")
-#system("cp -r #{cache_dir}/.profile.d #{build_dir}/")
 system("cp -r #{cache_dir}/.profile.d/* #{build_dir}/.profile.d/")
 system("chmod +x #{build_dir}/.profile.d/*")
 #home=ENV["HOME"]
@@ -62,6 +62,6 @@ system("chmod +x #{build_dir}/.profile.d/*")
 #Dir.chdir("#{build_dir}")
 #puts "$HOME=#{home}"
 #puts "-----build_dir----"
-#system("ls -al #{build_dir}")
+system("ls -al #{build_dir}")
 #puts "-----cache_dir----"
 #system("ls -al #{cache_dir}")
