@@ -4,4 +4,4 @@ home=ENV['HOME']
 
 
 puts "default_process_types:"
-puts "  web: fuse/start_sshfs"
+puts "  web: ./.sshfs/start_sshfs"
