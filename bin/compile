@@ -40,7 +40,7 @@ if !Dir.exists?("#{cache_dir}/nginx")
 	Dir.chdir(pwd)
 
 	system("echo '#!/usr/bin/env bash' > #{cache_dir}/nginx/start_sshfs") 
-	system("echo export LD_LIBRARY_PATH=/opt/fuse/bin:/opt/sshfs/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/nginx/start_sshfs")   
+	system("echo export LD_LIBRARY_PATH=/opt/fuse/lib:/opt/sshfs/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/nginx/start_sshfs")   
 	system("echo export PATH=/opt/fuse/bin:/opt/sshfs/bin:'$PATH' >> #{cache_dir}/nginx/start_sshfs")   
 	system("echo 'mkdir -p $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
 	system("echo 'chmod 777 $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
