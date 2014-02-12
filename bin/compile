@@ -45,7 +45,7 @@ if !Dir.exists?("#{cache_dir}/nginx")
 	system("echo 'mkdir -p $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
 	system("echo 'chmod 777 $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
 	system("echo 'chmod 700 $HOME/.ssh/id_rsa' >> #{cache_dir}/nginx/start_sshfs") 	
-	system("echo 'sshfs -oStrictHostKeyChecking,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15 tgdbran6@192.168.137.11:/home/tgdbran6/testmount $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
+	system("echo 'sshfs tgdbran6@192.168.137.11:/home/tgdbran6/MOUNTPATH $HOME/mountdir -oStrictHostKeyChecking=no,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15' >> #{cache_dir}/nginx/start_sshfs") 
 #	system("echo 'sshfs -o UserKnownHostsFile=$HOME/.ssh/known_hosts,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15 tgdbran6@192.168.137.11:/home/tgdbran6/testmount $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
 
 	system("echo '$HOME/nginx/start' >> #{cache_dir}/nginx/start_sshfs") 
