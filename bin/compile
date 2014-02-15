@@ -39,18 +39,19 @@ if !Dir.exists?("#{cache_dir}/nginx")
 	system("rm mono-3.2.3-64.tar.bz2")
 	Dir.chdir(pwd)
 
-	system("echo '#!/usr/bin/env bash' > #{cache_dir}/nginx/start_sshfs") 
-	system("echo export LD_LIBRARY_PATH=/opt/fuse/lib:/opt/sshfs/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/nginx/start_sshfs")   
-	system("echo export PATH=/opt/fuse/bin:/opt/sshfs/bin:'$PATH' >> #{cache_dir}/nginx/start_sshfs")   
-	system("echo 'mkdir -p $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
-	system("echo 'chmod 777 $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
-	system("echo 'chmod 700 $HOME/.ssh/id_rsa' >> #{cache_dir}/nginx/start_sshfs") 	
-	system("echo 'sshfs tgdbran6@192.168.137.11:/home/tgdbran6/MOUNTPATH $HOME/mountdir -oStrictHostKeyChecking=no,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15' >> #{cache_dir}/nginx/start_sshfs") 
-#	system("echo 'sshfs -o UserKnownHostsFile=$HOME/.ssh/known_hosts,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15 tgdbran6@192.168.137.11:/home/tgdbran6/testmount $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
+	#sshfs
+	#system("echo '#!/usr/bin/env bash' > #{cache_dir}/nginx/start_sshfs") 
+	#system("echo export LD_LIBRARY_PATH=/opt/fuse/lib:/opt/sshfs/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/nginx/start_sshfs")   
+	#system("echo export PATH=/opt/fuse/bin:/opt/sshfs/bin:'$PATH' >> #{cache_dir}/nginx/start_sshfs")   
+	#system("echo 'mkdir -p $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
+	#system("echo 'chmod 777 $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
+	#system("echo 'chmod 700 $HOME/.ssh/id_rsa' >> #{cache_dir}/nginx/start_sshfs") 	
+	#system("echo 'sshfs tgdbran6@192.168.137.11:/home/tgdbran6/MOUNTPATH $HOME/mountdir -oStrictHostKeyChecking=no,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15' >> #{cache_dir}/nginx/start_sshfs") 
+	#system("echo 'ls -al $HOME/mountdir > $HOME/sshfs.log' >> #{cache_dir}/nginx/start_sshfs") 
+	#system("echo '$HOME/nginx/start' >> #{cache_dir}/nginx/start_sshfs") 
+	#<--sshfs
 
-	system("echo 'ls -al $HOME/mountdir > $HOME/sshfs.log' >> #{cache_dir}/nginx/start_sshfs") 
 
-	system("echo '$HOME/nginx/start' >> #{cache_dir}/nginx/start_sshfs") 
 
 	system("mkdir -p #{cache_dir}/.profile.d")
 	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
@@ -68,7 +69,9 @@ end
 system("cp -r #{cache_dir}/nginx #{build_dir}/")
 system("cp -r #{cache_dir}/mono #{build_dir}/")
 
-system("chmod +x #{build_dir}/nginx/start_sshfs") 
+#sshfs
+#system("chmod +x #{build_dir}/nginx/start_sshfs") 
+#<--sshfs
 
 system("mkdir -p #{build_dir}/.profile.d")
 system("cp -r #{cache_dir}/.profile.d/* #{build_dir}/.profile.d/")
