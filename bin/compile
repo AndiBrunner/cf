@@ -4,9 +4,12 @@ require "open-uri"
 $:.unshift File.expand_path("../../lib", __FILE__)
 $stdout.sync = true
 
+pwd=Dir.pwd
 build_dir = ARGV[0]
 cache_dir = ARGV[1]
-pwd=Dir.pwd
+buildpack_dir = File.expand_path("..")
+
+puts "buildpack_dir=#{buildpack_dir}" 
 
 #puts "-----build_dir----"
 #puts "build_dir=#{build_dir}" 
