@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+erb $HOME/nginx/conf/nginx.conf.erb > $HOME/nginx/conf/nginx.conf
+$HOME/nginx/sbin/nginx
+$HOME/mono/bin/fastcgi-mono-server4 /applications=/:$HOME/www/ /socket=tcp:127.0.0.1:9000 &
+sleep 1
+while kill -0 "$(cat $HOME/nginx/logs/nginx.pid)"; do
+	sleep 0.5
+done
