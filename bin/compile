@@ -72,7 +72,7 @@ end
 system("cp -r #{cache_dir}/nginx #{build_dir}/")
 system("cp -r #{cache_dir}/mono #{build_dir}/")
 
-system("ls -al #{buildpack_dir}/default")
+system("ls -al #{buildpack_dir}")
 system("cp #{buildpack_dir}/default/start #{build_dir}/nginx/start")
 system("cp #{buildpack_dir}/default/nginx.conf.erb #{build_dir}/nginx/conf/nginx.conf.erb")
 
