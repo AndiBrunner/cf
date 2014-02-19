@@ -7,7 +7,7 @@ $stdout.sync = true
 pwd=Dir.pwd
 build_dir = ARGV[0]
 cache_dir = ARGV[1]
-buildpack_dir = File.expand_path("..")
+buildpack_dir = File.expand_path("..",__FILE__)
 
 puts "buildpack_dir=#{buildpack_dir}" 
 
