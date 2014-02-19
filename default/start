@@ -4,6 +4,7 @@
 export PATH=$HOME/nginx/sbin:$PATH
 export PATH=$HOME/mono/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/mono/lib:$LD_LIBRARY_PATH
+export MONO_IOMAP=all #makes all file system access case insensitive and strips drive name from pathnames
 
 #generate nginx.conf with current port and home directory
 erb $HOME/nginx/conf/nginx.conf.erb > $HOME/nginx/conf/nginx.conf
