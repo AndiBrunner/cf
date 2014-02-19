@@ -4,92 +4,39 @@ require "open-uri"
 $:.unshift File.expand_path("../../lib", __FILE__)
 $stdout.sync = true
 
-pwd=Dir.pwd
+#get relevant directories
+pwd = Dir.pwd
 build_dir = ARGV[0]
 cache_dir = ARGV[1]
 buildpack_dir = File.expand_path("../..",__FILE__)
 
-puts "buildpack_dir=#{buildpack_dir}" 
-
-#puts "-----build_dir----"
-#puts "build_dir=#{build_dir}" 
-#system("ls -al #{build_dir}")
-#puts "-----cache_dir----"
-#puts "cache_dir=#{cache_dir}" 
-#system("ls -al #{cache_dir}")
-#puts "-----pwd----"
-#puts "pwd=#{Dir.pwd}"
-#system("ls -al") 
-
+#check if app cache already exists
 if !Dir.exists?(cache_dir)	
 	Dir.mkdir(cache_dir) 
 end
 
+#check if buildpack tarballs have been already downloaded
 if !Dir.exists?("#{cache_dir}/nginx")	
 	Dir.chdir(cache_dir)
-	##system("echo export DYLD_LIBRARY_FALLBAC	K_PATH= "$HOME/#{mono_lib}:$DYLD_LIBRARY_FALLBACK_PATH"      
-	##system("echo export PKG_CONFIG_PATH= "$HOME/#{File.join(mono_lib,'pkgconfig')}:$PKG_CONFIG_PATH"      
-	##system("echo export C_INCLUDE_PATH= "$HOME/#{File.join(MONO_HOME,'include')}:$C_INCLUDE_PATH"      
-	##system("echo export ACLOCAL_PATH= "$HOME/#{File.join(MONO_HOME,'share','aclocal')}:$ACLOCAL_PATH"      
 
-	#download nginx
+	#download and extract nginx tarball from s3
 	system("wget https://s3.amazonaws.com/accax/nginx-1.4.1-64.tar.bz2")
 	system("tar xjvf nginx-1.4.1-64.tar.bz2")
 	system("rm nginx-1.4.1-64.tar.bz2")
-	#download mono
+
+	#download and extract mono tarball from s3
 	system("wget https://s3.amazonaws.com/accax/mono-3.2.3-64.tar.bz2")
 	system("tar xjvf mono-3.2.3-64.tar.bz2")
 	system("rm mono-3.2.3-64.tar.bz2")
 	Dir.chdir(pwd)
-
-	#sshfs
-	#system("echo '#!/usr/bin/env bash' > #{cache_dir}/nginx/start_sshfs") 
-	#system("echo export LD_LIBRARY_PATH=/opt/fuse/lib:/opt/sshfs/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/nginx/start_sshfs")   
-	#system("echo export PATH=/opt/fuse/bin:/opt/sshfs/bin:'$PATH' >> #{cache_dir}/nginx/start_sshfs")   
-	#system("echo 'mkdir -p $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
-	#system("echo 'chmod 777 $HOME/mountdir' >> #{cache_dir}/nginx/start_sshfs") 
-	#system("echo 'chmod 700 $HOME/.ssh/id_rsa' >> #{cache_dir}/nginx/start_sshfs") 	
-	#system("echo 'sshfs tgdbran6@192.168.137.11:/home/tgdbran6/MOUNTPATH $HOME/mountdir -oStrictHostKeyChecking=no,IdentityFile=$HOME/.ssh/id_rsa,ServerAliveInterval=15' >> #{cache_dir}/nginx/start_sshfs") 
-	#system("echo 'ls -al $HOME/mountdir > $HOME/sshfs.log' >> #{cache_dir}/nginx/start_sshfs") 
-	#system("echo '$HOME/nginx/start' >> #{cache_dir}/nginx/start_sshfs") 
-	#<--sshfs
-
-
-
-	#system("mkdir -p #{cache_dir}/.profile.d")
-	#system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
-	#system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
-	#system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/.profile.d/mono.sh")   
-
 end
 
-#Dir.chdir(build_dir)
-#system("mv #{pwd}/app #{pwd}/tmp/www")
-#system("mkdir -p #{pwd}/app")
-#system("mv #{pwd}/tmp/www #{pwd}/app/www")
-
-
+#copy nginx and mono from cache to build directory
 system("cp -r #{cache_dir}/nginx #{build_dir}/")
 system("cp -r #{cache_dir}/mono #{build_dir}/")
 
-system("ls -al #{buildpack_dir}")
+#copy start script to build directory
 system("cp #{buildpack_dir}/default/start #{build_dir}/nginx/start")
+
+#copy nginx.conf template to build directory
 system("cp #{buildpack_dir}/default/nginx.conf.erb #{build_dir}/nginx/conf/nginx.conf.erb")
-
-#sshfs
-#system("chmod +x #{build_dir}/nginx/start_sshfs") 
-#<--sshfs
-
-#+system("mkdir -p #{build_dir}/.profile.d")
-#+system("cp -r #{cache_dir}/.profile.d/* #{build_dir}/.profile.d/")
-#+system("chmod +x #{build_dir}/.profile.d/*")
-
-
-#home=ENV["HOME"]
-
-#Dir.chdir("#{build_dir}")
-#puts "$HOME=#{home}"
-#puts "-----build_dir----"
-system("ls -al #{build_dir}")
-#puts "-----cache_dir----"
-#system("ls -al #{cache_dir}")
