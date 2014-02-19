@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
+export PATH=$HOME/nginx/sbin:$PATH
+export PATH=$HOME/mono/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/mono/lib:$LD_LIBRARY_PATH
+
 erb $HOME/nginx/conf/nginx.conf.erb > $HOME/nginx/conf/nginx.conf
+
 $HOME/nginx/sbin/nginx
 $HOME/mono/bin/fastcgi-mono-server4 /applications=/:$HOME/www/ /socket=tcp:127.0.0.1:9000 &
+
 sleep 1
 while kill -0 "$(cat $HOME/nginx/logs/nginx.pid)"; do
 	sleep 0.5

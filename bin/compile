@@ -56,10 +56,10 @@ if !Dir.exists?("#{cache_dir}/nginx")
 
 
 
-	system("mkdir -p #{cache_dir}/.profile.d")
-	system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
-	system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
-	system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/.profile.d/mono.sh")   
+	#system("mkdir -p #{cache_dir}/.profile.d")
+	#system("echo export PATH=$HOME/app/nginx/sbin:'$PATH'> #{cache_dir}/.profile.d/nginx.sh")
+	#system("echo export PATH=$HOME/app/mono/bin:'$PATH' > #{cache_dir}/.profile.d/mono.sh")
+	#system("echo export LD_LIBRARY_PATH=$HOME/app/mono/lib:'$LD_LIBRARY_PATH' >> #{cache_dir}/.profile.d/mono.sh")   
 
 end
 
@@ -72,13 +72,19 @@ end
 system("cp -r #{cache_dir}/nginx #{build_dir}/")
 system("cp -r #{cache_dir}/mono #{build_dir}/")
 
+
+system("cp #{buildpack_dir}/default/start #{build_dir}/nginx/start")
+system("cp #{buildpack_dir}/default/nginx.conf.erb #{build_dir}/nginx/conf/nginx.conf.erb")
+
 #sshfs
 #system("chmod +x #{build_dir}/nginx/start_sshfs") 
 #<--sshfs
 
-system("mkdir -p #{build_dir}/.profile.d")
-system("cp -r #{cache_dir}/.profile.d/* #{build_dir}/.profile.d/")
-system("chmod +x #{build_dir}/.profile.d/*")
+#+system("mkdir -p #{build_dir}/.profile.d")
+#+system("cp -r #{cache_dir}/.profile.d/* #{build_dir}/.profile.d/")
+#+system("chmod +x #{build_dir}/.profile.d/*")
+
+
 #home=ENV["HOME"]
 
 #Dir.chdir("#{build_dir}")
